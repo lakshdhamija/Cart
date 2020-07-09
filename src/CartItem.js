@@ -22,6 +22,13 @@ class CartItem extends React.Component { // class based component
             }
         });
     }
+    decreaseQuantity = () => {
+        this.setState((prevState) => {
+            return {
+                qty: prevState.qty - 1
+            }
+        });
+    }
     render () {
         const {title, price, qty} = this.state; // object destructuring so we do not have to write 'this.state' everytime
         return (
@@ -35,9 +42,14 @@ class CartItem extends React.Component { // class based component
                     <div style={{color: '#777'}}>Qty: {qty}</div>
                     <div className="cart-item-actions">
                         {/* Buttons */}
-                        <img alt="increase" className="action-icons" src="https://image.flaticon.com/icons/svg/992/992651.svg" onClick={this.increaseQuantity} />
-                        <img alt="decrease" className="action-icons" src="https://image.flaticon.com/icons/svg/992/992683.svg" />
-                        <img alt="delete" className="action-icons" src="https://image.flaticon.com/icons/svg/1214/1214428.svg" />
+                        <img alt="increase" className="action-icons" 
+                        src="https://image.flaticon.com/icons/svg/992/992651.svg" 
+                        onClick={this.increaseQuantity} />
+                        <img alt="decrease" className="action-icons" 
+                        src="https://image.flaticon.com/icons/svg/992/992683.svg"
+                        onClick={this.decreaseQuantity} />
+                        <img alt="delete" className="action-icons" 
+                        src="https://image.flaticon.com/icons/svg/1214/1214428.svg" />
                     </div>
                 </div>
             </div>    
