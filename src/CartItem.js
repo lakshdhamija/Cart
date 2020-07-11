@@ -1,14 +1,6 @@
 import React from 'react';
 class CartItem extends React.Component { // class based component
-    constructor (){
-        super();
-        this.state = {
-            price: 999,
-            title: 'Phone',
-            qty: 1,
-            img: ''
-        }
-    }
+    
     increaseQuantity = () => {
         // setState form 1
         // this.setState({
@@ -23,7 +15,7 @@ class CartItem extends React.Component { // class based component
         });
     }
     decreaseQuantity = () => {
-        const {qty} = this.state;
+        const {qty} = this.props;
         if(qty === 1) // if quantity is 1 then do not decease further
             return;
 
@@ -34,7 +26,7 @@ class CartItem extends React.Component { // class based component
         });
     }
     render () {
-        const {title, price, qty} = this.state; // object destructuring so we do not have to write 'this.state' everytime
+        const {title, price, qty} = this.props.product; // object destructuring so we do not have to write 'this.state' everytime
         return (
             <div className="cart-item">
                 <div className="left-blcok">
