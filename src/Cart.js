@@ -38,17 +38,17 @@ class Cart extends React.Component { // class based component
            products: products 
         });
     }
-    // handleDecreaseQuantity = (product) => {
-    //     const{ products } = this.state;
-    //     const index = products.indexOf(product);
-    //     if(products[index].qty == 1){
-    //         return;
-    //     }
-    //     products[index].qty -= 1;
-    //     this.setState({
-    //         products: products
-    //     });
-    // }
+    handleDecreaseQuantity = (product) => {
+        const{ products } = this.state;
+        const index = products.indexOf(product);
+        if(products[index].qty == 1){
+            return;
+        }
+        products[index].qty -= 1;
+        this.setState({
+            products: products
+        });
+    }
     render(){
         const { products } = this.state;
         return(
