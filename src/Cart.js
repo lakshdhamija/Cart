@@ -41,12 +41,19 @@ class Cart extends React.Component { // class based component
     handleDecreaseQuantity = (product) => {
         const{ products } = this.state;
         const index = products.indexOf(product);
-        if(products[index].qty == 1){
+        if(products[index].qty === 1){
             return;
         }
         products[index].qty -= 1;
         this.setState({
             products: products
+        });
+    }
+    handleDeleteProduct = (id) => {
+        const {products} = this.state;
+        const items = products.filter((item) => item.id !== id); // This will return array of products in which id is not equal to the id in the argument
+        this.setState({
+            products: items
         });
     }
     render(){
@@ -60,6 +67,7 @@ class Cart extends React.Component { // class based component
                             key={product.id} 
                             onIncreaseQuantity={this.handleIncreaseQuantity}
                             onDecreaseQuantity={this.handleDecreaseQuantity}
+                            onDeleteProduct={this.handleDeleteProduct}
                         />
                     )
                 })}
